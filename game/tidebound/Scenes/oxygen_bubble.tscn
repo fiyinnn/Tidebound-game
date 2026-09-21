@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cv8ga864mw6gu"]
+
+[ext_resource type="Script" uid="uid://cx5vkctxafglf" path="res://Scripts/oxygen_bubble.gd" id="1_k7t11"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5h11f"]
+radius = 30.0
+
+[node name="OxygenBubble" type="Area2D" unique_id=2009595657]
+script = ExtResource("1_k7t11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1325186262]
+shape = SubResource("CircleShape2D_5h11f")
+
+[node name="BubbleVisual" type="Label" parent="." unique_id=620882616]
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "O₂"
