@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dba57l5ixm160"]
+
+[ext_resource type="Script" uid="uid://e0is6haskjmh" path="res://Scripts/main.gd" id="1_vwg62"]
+[ext_resource type="PackedScene" uid="uid://crwv8emwndjgn" path="res://Scenes/player.tscn" id="2_qf6rc"]
+[ext_resource type="PackedScene" uid="uid://cv8ga864mw6gu" path="res://Scenes/oxygen_bubble.tscn" id="3_53xsp"]
+[ext_resource type="PackedScene" uid="uid://ru485hyrqu2c" path="res://Scenes/tide_seal.tscn" id="4_5e78q"]
+[ext_resource type="PackedScene" uid="uid://bwjkllkph5mfa" path="res://Scenes/level_exit.tscn" id="5_l4wr6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5h11f"]
+size = Vector2(100, 300)
+
+[node name="main" type="Node2D" unique_id=393614202]
+script = ExtResource("1_vwg62")
+required_seals = 3
+requires_partner_rescue = true
+
+[node name="Player" parent="." unique_id=580810578 instance=ExtResource("2_qf6rc")]
+position = Vector2(576, 324)
+
+[node name="Testwall" type="StaticBody2D" parent="." unique_id=459135297]
+position = Vector2(800, 324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Testwall" unique_id=525623567]
+shape = SubResource("RectangleShape2D_5h11f")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1597203634]
+
+[node name="OxygenLabel" type="Label" parent="HUD" unique_id=1271549223]
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 96.0
+offset_bottom = 43.0
+text = "OXYGEN"
+
+[node name="OxygenBar" type="ProgressBar" parent="HUD" unique_id=1520626129]
+offset_left = 30.0
+offset_top = 55.0
+offset_right = 330.0
+offset_bottom = 85.0
+value = 100.0
+
+[node name="SealLabel" type="Label" parent="HUD" unique_id=624405666]
+offset_left = 30.0
+offset_top = 100.0
+offset_right = 156.0
+offset_bottom = 123.0
+theme_override_font_sizes/font_size = 20
+text = "TIDE SEALS: 0 / 1"
+
+[node name="OxygenBubble" parent="." unique_id=2009595657 instance=ExtResource("3_53xsp")]
+position = Vector2(400, 324)
+
+[node name="TideSeal" parent="." unique_id=4018215 instance=ExtResource("4_5e78q")]
+position = Vector2(650, 200)
+
+[node name="TideSeal2" parent="." unique_id=75283038 instance=ExtResource("4_5e78q")]
+position = Vector2(900, 180)
+
+[node name="TideSeal3" parent="." unique_id=340123333 instance=ExtResource("4_5e78q")]
+position = Vector2(300, 500)
+
+[node name="Partner" parent="." unique_id=116588116 instance=ExtResource("4_5e78q")]
+position = Vector2(600, 500)
+is_partner = true
+
+[node name="SealVisual" parent="Partner" index="1" unique_id=620882616]
+theme_override_font_sizes/font_size = 40
+text = "PARTNER"
+
+[node name="LevelExit" parent="." unique_id=773169958 instance=ExtResource("5_l4wr6")]
+position = Vector2(1100, 324)
+
+[editable path="Partner"]

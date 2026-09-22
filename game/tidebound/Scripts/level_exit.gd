@@ -9,7 +9,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D and is_open:
+	if body is CharacterBody2D:
 		var main_scene := get_tree().current_scene
 
 		if main_scene.has_method("try_exit"):

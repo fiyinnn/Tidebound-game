@@ -12,6 +12,7 @@ size = Vector2(100, 300)
 [node name="main" type="Node2D" unique_id=393614202]
 script = ExtResource("1_v36qu")
 required_seals = 2
+next_level = "uid://dba57l5ixm160"
 
 [node name="Player" parent="." unique_id=580810578 instance=ExtResource("2_cggpd")]
 position = Vector2(576, 324)
