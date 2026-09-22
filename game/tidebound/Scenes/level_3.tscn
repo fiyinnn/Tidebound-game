@@ -47,6 +47,22 @@ offset_bottom = 123.0
 theme_override_font_sizes/font_size = 20
 text = "TIDE SEALS: 0 / 1"
 
+[node name="RestartButton" type="Button" parent="HUD" unique_id=32351425]
+visible = false
+offset_left = 486.0
+offset_top = 360.0
+offset_right = 666.0
+offset_bottom = 410.0
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="HUD" unique_id=881167214]
+visible = false
+offset_left = 486.0
+offset_top = 425.0
+offset_right = 666.0
+offset_bottom = 475.0
+text = "QUIT"
+
 [node name="OxygenBubble" parent="." unique_id=2009595657 instance=ExtResource("3_53xsp")]
 position = Vector2(400, 324)
 
