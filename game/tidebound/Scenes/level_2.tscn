@@ -1,19 +1,19 @@
-[gd_scene format=3 uid="uid://d1ymn4qsk2w6f"]
+[gd_scene format=3 uid="uid://dvx4evcctb75u"]
 
-[ext_resource type="Script" uid="uid://e0is6haskjmh" path="res://Scripts/main.gd" id="1_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://crwv8emwndjgn" path="res://Scenes/player.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://cv8ga864mw6gu" path="res://Scenes/oxygen_bubble.tscn" id="3_8gbba"]
-[ext_resource type="PackedScene" uid="uid://ru485hyrqu2c" path="res://Scenes/tide_seal.tscn" id="4_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://bwjkllkph5mfa" path="res://Scenes/level_exit.tscn" id="5_kry3j"]
+[ext_resource type="Script" uid="uid://e0is6haskjmh" path="res://Scripts/main.gd" id="1_v36qu"]
+[ext_resource type="PackedScene" uid="uid://crwv8emwndjgn" path="res://Scenes/player.tscn" id="2_cggpd"]
+[ext_resource type="PackedScene" uid="uid://cv8ga864mw6gu" path="res://Scenes/oxygen_bubble.tscn" id="3_055b2"]
+[ext_resource type="PackedScene" uid="uid://ru485hyrqu2c" path="res://Scenes/tide_seal.tscn" id="4_2mgoq"]
+[ext_resource type="PackedScene" uid="uid://bwjkllkph5mfa" path="res://Scenes/level_exit.tscn" id="5_uhnj4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5h11f"]
 size = Vector2(100, 300)
 
 [node name="main" type="Node2D" unique_id=393614202]
-script = ExtResource("1_bo1nx")
-next_level = "uid://dvx4evcctb75u"
+script = ExtResource("1_v36qu")
+required_seals = 2
 
-[node name="Player" parent="." unique_id=580810578 instance=ExtResource("1_jjgbg")]
+[node name="Player" parent="." unique_id=580810578 instance=ExtResource("2_cggpd")]
 position = Vector2(576, 324)
 
 [node name="Testwall" type="StaticBody2D" parent="." unique_id=459135297]
@@ -46,11 +46,14 @@ offset_bottom = 123.0
 theme_override_font_sizes/font_size = 20
 text = "TIDE SEALS: 0 / 1"
 
-[node name="OxygenBubble" parent="." unique_id=2009595657 instance=ExtResource("3_8gbba")]
+[node name="OxygenBubble" parent="." unique_id=2009595657 instance=ExtResource("3_055b2")]
 position = Vector2(400, 324)
 
-[node name="TideSeal" parent="." unique_id=4018215 instance=ExtResource("4_jjvhh")]
+[node name="TideSeal" parent="." unique_id=4018215 instance=ExtResource("4_2mgoq")]
 position = Vector2(650, 200)
 
-[node name="LevelExit" parent="." unique_id=773169958 instance=ExtResource("5_kry3j")]
+[node name="TideSeal2" parent="." unique_id=75283038 instance=ExtResource("4_2mgoq")]
+position = Vector2(900, 180)
+
+[node name="LevelExit" parent="." unique_id=773169958 instance=ExtResource("5_uhnj4")]
 position = Vector2(1100, 324)
