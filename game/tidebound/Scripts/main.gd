@@ -45,14 +45,17 @@ func _process(delta: float) -> void:
 		get_tree().reload_current_scene()
 
 func refill_oxygen(amount: float) -> void:
+	$Player/OxygenPickupSound.play()
 	current_oxygen = minf(
 		current_oxygen + amount,
 		max_oxygen
 	)
+	
 
 	oxygen_bar.value = current_oxygen
 
 func collect_seal() -> void:
+	$Player/SealCollectSound.play()
 	collected_seals += 1
 	update_seal_label()
 	check_objectives()
@@ -105,6 +108,7 @@ func try_exit() -> void:
 		update_seal_label()
 func show_win_screen() -> void:
 	seal_label.text = "MISSION COMPLETE!"
+	$Player/MissionCompleteSound.play()
 	set_process(false)
 	$Player.set_physics_process(false)
 
@@ -113,6 +117,7 @@ func show_win_screen() -> void:
 
 	if quit_button != null:
 		quit_button.visible = true
+		
 func _restart_game() -> void:
 	get_tree().change_scene_to_file(
 		"res://Scenes/main.tscn"

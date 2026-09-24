@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bwjkllkph5mfa"]
 
 [ext_resource type="Script" uid="uid://bgw4qp5gjb7ah" path="res://Scripts/level_exit.gd" id="1_845nk"]
+[ext_resource type="AudioStream" uid="uid://drkxl5bt2g11" path="res://Audio/gate_metal_clank.wav" id="2_tuocj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5h11f"]
 radius = 70.0
@@ -27,3 +28,6 @@ text = "EXIT"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier" unique_id=125316726]
 shape = SubResource("RectangleShape2D_5h11f")
+
+[node name="ExitOpenSound" type="AudioStreamPlayer2D" parent="." unique_id=440744084]
+stream = ExtResource("2_tuocj")

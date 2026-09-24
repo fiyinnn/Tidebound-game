@@ -20,6 +20,7 @@ func open_exit() -> void:
 		return
 
 	is_open = true
+	$ExitOpenSound.play()
 	exit_visual.text = "OPEN"
 
 	if is_instance_valid(barrier):
