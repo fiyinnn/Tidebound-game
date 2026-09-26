@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://crwv8emwndjgn"]
 
 [ext_resource type="Script" uid="uid://b6pij26xq1kly" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://dbsagnypque5n" path="res://icon.svg" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://bep3a1lbyq5gw" path="res://underwater-diving-files/underwater-diving-files/PNG/player/player-swiming.png" id="2_fkybt"]
 [ext_resource type="AudioStream" uid="uid://cxboeaayoyrtn" path="res://Audio/underwater_ambience.wav" id="3_6t5aa"]
 [ext_resource type="AudioStream" uid="uid://dv7c87h8i54mk" path="res://Audio/oxygen_pickup.wav" id="4_vgqql"]
 [ext_resource type="AudioStream" uid="uid://cxuos5i021cgq" path="res://Audio/seal_collect.wav" id="5_fkybt"]
@@ -57,8 +57,8 @@ motion_mode = 1
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=260827741]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_v0iea")
+texture = ExtResource("2_fkybt")
+hframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=564695584]
 shape = SubResource("CircleShape2D_5h11f")

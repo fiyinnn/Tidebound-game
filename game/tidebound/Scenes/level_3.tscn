@@ -5,9 +5,68 @@
 [ext_resource type="PackedScene" uid="uid://cv8ga864mw6gu" path="res://Scenes/oxygen_bubble.tscn" id="3_53xsp"]
 [ext_resource type="PackedScene" uid="uid://ru485hyrqu2c" path="res://Scenes/tide_seal.tscn" id="4_5e78q"]
 [ext_resource type="PackedScene" uid="uid://bwjkllkph5mfa" path="res://Scenes/level_exit.tscn" id="5_l4wr6"]
+[ext_resource type="Texture2D" uid="uid://bpkekpptkdt5m" path="res://SpearFishing Assets Pack/Sprites/Diver-32x32/Diver 6.png" id="5_qf6rc"]
+[ext_resource type="Texture2D" uid="uid://c2qlxdok6weot" path="res://underwater-diving-files/underwater-diving-files/PNG/environment/background.png" id="7_jtv8s"]
+[ext_resource type="Texture2D" uid="uid://c51uunb3j5wa2" path="res://underwater-diving-files/underwater-diving-files/PNG/environment/midground.png" id="8_c81s1"]
+[ext_resource type="Texture2D" uid="uid://bvqm34py8xnd5" path="res://SpearFishing Assets Pack/Sprites/Bubble - 8x8.png" id="9_n4vm5"]
+[ext_resource type="Texture2D" uid="uid://df0dr1mw08qq8" path="res://underwater-diving-files/underwater-diving-files/PNG/environment/props.png" id="10_fxnjf"]
+[ext_resource type="Script" uid="uid://ckb16rs0tlkm3" path="res://Scripts/current_zone.gd" id="11_xjeco"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5h11f"]
 size = Vector2(100, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j77fg"]
+atlas = ExtResource("9_n4vm5")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ki8bc"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(520, 5, 0)
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 15.0
+initial_velocity_max = 28.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbwsh"]
+atlas = ExtResource("10_fxnjf")
+region = Rect2(608, 336, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgmqw"]
+atlas = ExtResource("10_fxnjf")
+region = Rect2(512, 352, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s80er"]
+atlas = ExtResource("10_fxnjf")
+region = Rect2(432, 352, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jhox"]
+atlas = ExtResource("10_fxnjf")
+region = Rect2(192, 32, 240, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hed5s"]
+size = Vector2(500, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yykrm"]
+atlas = ExtResource("9_n4vm5")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2awvy"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(250, 90, 0)
+direction = Vector3(-1, 0, 0)
+spread = 8.0
+initial_velocity_min = 50.0
+initial_velocity_max = 75.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 3.0
 
 [node name="main" type="Node2D" unique_id=393614202]
 script = ExtResource("1_vwg62")
@@ -83,7 +142,88 @@ is_partner = true
 theme_override_font_sizes/font_size = 40
 text = "PARTNER"
 
+[node name="PartnerSprite" type="Sprite2D" parent="Partner" unique_id=936267966]
+scale = Vector2(2, 2)
+texture = ExtResource("5_qf6rc")
+hframes = 7
+vframes = 4
+
 [node name="LevelExit" parent="." unique_id=773169958 instance=ExtResource("5_l4wr6")]
 position = Vector2(1100, 324)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1617960027]
+z_index = -10
+position = Vector2(367, 324)
+scale = Vector2(2.55, 2.55)
+texture = ExtResource("7_jtv8s")
+
+[node name="Background2" type="Sprite2D" parent="." unique_id=1845519674]
+z_index = -10
+position = Vector2(1101, 324)
+scale = Vector2(2.55, 2.55)
+texture = ExtResource("7_jtv8s")
+flip_h = true
+
+[node name="MidgroundLeft2" type="Sprite2D" parent="." unique_id=434565633]
+z_index = -9
+position = Vector2(1101, 324)
+scale = Vector2(2.55, 2.55)
+texture = ExtResource("8_c81s1")
+flip_h = true
+
+[node name="MidgroundLeft" type="Sprite2D" parent="." unique_id=960666320]
+z_index = -9
+position = Vector2(367, 324)
+scale = Vector2(2.5500002, 2.5500002)
+texture = ExtResource("8_c81s1")
+
+[node name="BubbleParticles" type="GPUParticles2D" parent="." unique_id=1688936698]
+z_index = -5
+position = Vector2(576, 650)
+amount = 14
+texture = SubResource("AtlasTexture_j77fg")
+lifetime = 10.0
+preprocess = 6.0
+randomness = 0.7
+process_material = SubResource("ParticleProcessMaterial_ki8bc")
+
+[node name="Seaweed1" type="Sprite2D" parent="." unique_id=415734961]
+z_index = -2
+position = Vector2(900, 600)
+texture = SubResource("AtlasTexture_nbwsh")
+
+[node name="PinkCoral1" type="Sprite2D" parent="." unique_id=1652183354]
+z_index = -2
+position = Vector2(200, 600)
+texture = SubResource("AtlasTexture_kgmqw")
+
+[node name="YellowPlant1" type="Sprite2D" parent="." unique_id=1908673312]
+z_index = -2
+position = Vector2(650, 600)
+texture = SubResource("AtlasTexture_s80er")
+
+[node name="GateArch" type="Sprite2D" parent="." unique_id=880133986]
+z_index = -1
+position = Vector2(1100, 324)
+scale = Vector2(0.7, 0.7)
+texture = SubResource("AtlasTexture_8jhox")
+
+[node name="CurrentZone" type="Area2D" parent="." unique_id=2014491324]
+position = Vector2(750, 325)
+script = ExtResource("11_xjeco")
+push_force = Vector2(-230, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CurrentZone" unique_id=2024211223]
+shape = SubResource("RectangleShape2D_hed5s")
+
+[node name="CurrentParticles" type="GPUParticles2D" parent="CurrentZone" unique_id=934210831]
+self_modulate = Color(0.40784314, 0.84705883, 1, 1)
+z_index = -5
+amount = 30
+texture = SubResource("AtlasTexture_yykrm")
+lifetime = 3.0
+preprocess = 3.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_2awvy")
 
 [editable path="Partner"]

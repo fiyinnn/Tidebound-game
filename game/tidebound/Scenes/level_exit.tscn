@@ -16,13 +16,16 @@ script = ExtResource("1_845nk")
 shape = SubResource("CircleShape2D_5h11f")
 
 [node name="ExitVisual" type="Label" parent="." unique_id=620882616]
-offset_left = -20.0
-offset_top = -22.0
-offset_right = 20.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0.05882353, 1, 0.101960786, 1)
-theme_override_font_sizes/font_size = 32
+offset_left = -40.0
+offset_top = -125.0
+offset_right = 40.0
+offset_bottom = -95.0
+theme_override_colors/font_color = Color(0.72156864, 0.9490196, 0.9019608, 1)
+theme_override_colors/font_outline_color = Color(0.023529412, 0.16862746, 0.16862746, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
 text = "EXIT"
+horizontal_alignment = 1
 
 [node name="Barrier" type="StaticBody2D" parent="." unique_id=231485403]
 

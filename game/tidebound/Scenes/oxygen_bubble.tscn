@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://cv8ga864mw6gu"]
 
 [ext_resource type="Script" uid="uid://cx5vkctxafglf" path="res://Scripts/oxygen_bubble.gd" id="1_k7t11"]
+[ext_resource type="Texture2D" uid="uid://y23pjs6bwlev" path="res://SpearFishing Assets Pack/Sprites/Icons - 18x18/Icons.png" id="2_l5tsy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5h11f"]
 radius = 30.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h11f"]
+atlas = ExtResource("2_l5tsy")
+region = Rect2(18, 18, 18, 18)
 
 [node name="OxygenBubble" type="Area2D" unique_id=2009595657]
 script = ExtResource("1_k7t11")
@@ -12,9 +17,14 @@ script = ExtResource("1_k7t11")
 shape = SubResource("CircleShape2D_5h11f")
 
 [node name="BubbleVisual" type="Label" parent="." unique_id=620882616]
+visible = false
 offset_left = -20.0
 offset_top = -22.0
 offset_right = 20.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 32
 text = "O₂"
+
+[node name="OxygenIcon" type="Sprite2D" parent="." unique_id=1127603640]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_5h11f")
