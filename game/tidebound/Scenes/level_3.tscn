@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://e0is6haskjmh" path="res://Scripts/main.gd" id="1_vwg62"]
 [ext_resource type="PackedScene" uid="uid://crwv8emwndjgn" path="res://Scenes/player.tscn" id="2_qf6rc"]
 [ext_resource type="PackedScene" uid="uid://cv8ga864mw6gu" path="res://Scenes/oxygen_bubble.tscn" id="3_53xsp"]
+[ext_resource type="Texture2D" uid="uid://c3lkl2elnk23v" path="res://SpearFishing Assets Pack/Oxygenlabel.png" id="3_fxnjf"]
 [ext_resource type="PackedScene" uid="uid://ru485hyrqu2c" path="res://Scenes/tide_seal.tscn" id="4_5e78q"]
 [ext_resource type="PackedScene" uid="uid://bwjkllkph5mfa" path="res://Scenes/level_exit.tscn" id="5_l4wr6"]
 [ext_resource type="Texture2D" uid="uid://bpkekpptkdt5m" path="res://SpearFishing Assets Pack/Sprites/Diver-32x32/Diver 6.png" id="5_qf6rc"]
@@ -11,9 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://bvqm34py8xnd5" path="res://SpearFishing Assets Pack/Sprites/Bubble - 8x8.png" id="9_n4vm5"]
 [ext_resource type="Texture2D" uid="uid://df0dr1mw08qq8" path="res://underwater-diving-files/underwater-diving-files/PNG/environment/props.png" id="10_fxnjf"]
 [ext_resource type="Script" uid="uid://ckb16rs0tlkm3" path="res://Scripts/current_zone.gd" id="11_xjeco"]
+[ext_resource type="AudioStream" uid="uid://bb8gdedtfstec" path="res://Audio/prison_gate_locked.wav" id="12_n4vm5"]
+[ext_resource type="Texture2D" uid="uid://dbl5x00oj05xg" path="res://SpearFishing Assets Pack/underwater_prison_gate.png" id="13_fxnjf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5h11f"]
 size = Vector2(100, 300)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n4vm5"]
+radius = 70.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j77fg"]
 atlas = ExtResource("9_n4vm5")
@@ -70,6 +76,7 @@ scale_max = 3.0
 
 [node name="main" type="Node2D" unique_id=393614202]
 script = ExtResource("1_vwg62")
+oxygen_drain_rate = 6.0
 required_seals = 3
 requires_partner_rescue = true
 
@@ -85,6 +92,7 @@ shape = SubResource("RectangleShape2D_5h11f")
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1597203634]
 
 [node name="OxygenLabel" type="Label" parent="HUD" unique_id=1271549223]
+visible = false
 offset_left = 30.0
 offset_top = 20.0
 offset_right = 96.0
@@ -103,6 +111,7 @@ offset_left = 30.0
 offset_top = 100.0
 offset_right = 156.0
 offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.039215688, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "TIDE SEALS: 0 / 1"
 
@@ -122,6 +131,11 @@ offset_right = 666.0
 offset_bottom = 475.0
 text = "QUIT"
 
+[node name="OxygenLabel2" type="Sprite2D" parent="HUD" unique_id=2051765159]
+position = Vector2(130, 22)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("3_fxnjf")
+
 [node name="OxygenBubble" parent="." unique_id=2009595657 instance=ExtResource("3_53xsp")]
 position = Vector2(400, 324)
 
@@ -137,6 +151,9 @@ position = Vector2(300, 500)
 [node name="Partner" parent="." unique_id=116588116 instance=ExtResource("4_5e78q")]
 position = Vector2(600, 500)
 is_partner = true
+
+[node name="CollisionShape2D" parent="Partner" index="0" unique_id=1325186262]
+shape = SubResource("CircleShape2D_n4vm5")
 
 [node name="SealVisual" parent="Partner" index="1" unique_id=620882616]
 theme_override_font_sizes/font_size = 40
@@ -225,5 +242,14 @@ lifetime = 3.0
 preprocess = 3.0
 randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_2awvy")
+
+[node name="PartnerLockedSound" type="AudioStreamPlayer2D" parent="." unique_id=411300127]
+stream = ExtResource("12_n4vm5")
+
+[node name="PrisonGate" type="Sprite2D" parent="." unique_id=992656449]
+z_index = 2
+position = Vector2(600, 500)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("13_fxnjf")
 
 [editable path="Partner"]

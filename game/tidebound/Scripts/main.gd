@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var max_oxygen: float = 100.0
-@export var oxygen_drain_rate: float = 10.0
+@export var oxygen_drain_rate: float = 5.0
 @export var required_seals: int = 1
 @export var requires_partner_rescue: bool = false
 @export_file("*.tscn") var next_level: String = ""
@@ -12,6 +12,9 @@ var partner_rescued: bool = false
 
 @onready var oxygen_bar: ProgressBar = $HUD/OxygenBar
 @onready var seal_label: Label = $HUD/SealLabel
+@onready var partner_locked_sound := find_child("PartnerLockedSound", true, false) as AudioStreamPlayer
+
+
 
 @onready var restart_button: Button = get_node_or_null(
 	"HUD/RestartButton"
@@ -64,6 +67,11 @@ func rescue_partner() -> bool:
 	if collected_seals < required_seals:
 		seal_label.text = "FIND ALL TIDE SEALS FIRST!"
 		return false
+
+	partner_rescued = true
+	seal_label.text = "PARTNER RESCUED!"
+	check_objectives()
+	return true
 
 	partner_rescued = true
 	seal_label.text = "PARTNER RESCUED!"
