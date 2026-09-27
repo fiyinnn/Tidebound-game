@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://e0is6haskjmh" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://crwv8emwndjgn" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://cv8ga864mw6gu" path="res://Scenes/oxygen_bubble.tscn" id="3_8gbba"]
-[ext_resource type="Texture2D" uid="uid://bbhtifyb6wher" path="res://SpearFishing Assets Pack/How to play image .png" id="4_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://ru485hyrqu2c" path="res://Scenes/tide_seal.tscn" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://4rg8qskjyuyc" path="res://SpearFishing Assets Pack/New label.png" id="4_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://c3lkl2elnk23v" path="res://SpearFishing Assets Pack/Oxygenlabel.png" id="5_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://bwjkllkph5mfa" path="res://Scenes/level_exit.tscn" id="5_kry3j"]
 [ext_resource type="Texture2D" uid="uid://c2qlxdok6weot" path="res://underwater-diving-files/underwater-diving-files/PNG/environment/background.png" id="6_21xkr"]
@@ -121,9 +121,9 @@ theme_override_font_sizes/font_size = 20
 text = "TIDE SEALS: 0 / 1"
 
 [node name="TutorialCard" type="Sprite2D" parent="HUD" unique_id=1640850442]
-position = Vector2(500, 110)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("4_fdnlq")
+position = Vector2(750, 70)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_jkdf5")
 
 [node name="OxygenLabel2" type="Sprite2D" parent="HUD" unique_id=1600662949]
 position = Vector2(130, 22)
